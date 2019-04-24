@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LoggerApplication<logtoqueue>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.orion.logger.logtoqueue.LoggerApplication",
+            "projectName": "logtoqueue",
+            "args": ""
+        }
+    ]
+}
