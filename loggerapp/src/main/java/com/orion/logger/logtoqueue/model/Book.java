@@ -5,12 +5,10 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-@Document (indexName = "livraria", type = "book")
+@Document (indexName = "jumila_log", type = "log")
 public class Book {
 
     @Id

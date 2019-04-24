@@ -1,5 +1,6 @@
 package com.orion.logger.logtoqueue;
 
+
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
@@ -28,10 +29,21 @@ public class ElasticsearchConfig {
 
     @Bean(destroyMethod = "close")
     public RestHighLevelClient client() {
-        RestHighLevelClient client = new RestHighLevelClient(
-                RestClient.builder(new HttpHost(host, port)));
+        RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost(host, port)));
         return client;
     }
-   
+
     
+    // @Bean
+    // RestHighLevelClient elasticsearchClient() {
+    //     final ClientConfiguration configuration = ClientConfiguration.localhost();
+    //     RestHighLevelClient client = RestClients.create(configuration).rest();
+    //     return client;
+    // }
+
+    // @Bean
+    // ElasticsearchRestTemplate elasticsearchTemplate() {
+    //     return new ElasticsearchRestTemplate(elasticsearchClient());
+    // }
+
 }

@@ -1,8 +1,11 @@
 package com.orion.logger.logtoqueue.controller;
 
+import java.util.List;
+
 import com.orion.logger.logtoqueue.model.Book;
 import com.orion.logger.logtoqueue.service.BookService;
 
+import org.elasticsearch.action.search.SearchRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +31,13 @@ public class BookController {
     public Book findById(@PathVariable String id) throws Exception {
         log.info("acessando api");
         return service.findById(id);
+    }
+
+    @GetMapping
+    public List<Book> findAll() throws Exception {
+        log.info("acessando api");
+        return service.findAll();
+        
     }
 
 }

@@ -30,7 +30,7 @@ public class BookSenderService {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    @Scheduled(fixedDelay = 5000)
+    //@Scheduled(fixedDelay = 5000)
     public void sendPraticalTip() {
         UUID id = UUID.randomUUID();
         Book b1 = new Book(id.toString(), "Liro " + id.toString());
