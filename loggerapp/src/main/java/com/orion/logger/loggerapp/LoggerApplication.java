@@ -12,8 +12,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
-@ComponentScan(basePackages = "com.orion.logger.logtoqueue")
-@EnableElasticsearchRepositories(basePackages = "com.orion.logger.logtoqueue.repository")
+@ComponentScan(basePackages = "com.orion.logger.loggerapp")
+@EnableElasticsearchRepositories(basePackages = "com.orion.logger.loggerapp.repository")
 public class LoggerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LoggerApplication.class, args);

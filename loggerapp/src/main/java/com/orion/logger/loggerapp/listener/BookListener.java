@@ -1,8 +1,8 @@
 package com.orion.logger.loggerapp.listener;
 
-// import static com.orion.logger.logtoqueue.enums.RabbitMqEnum.EXCHANGE_NAME;
-// import static com.orion.logger.logtoqueue.enums.RabbitMqEnum.QUEUE;
-// import static com.orion.logger.logtoqueue.enums.RabbitMqEnum.ROUTING_KEY;
+// import static com.orion.logger.loggerapp.enums.RabbitMqEnum.EXCHANGE_NAME;
+// import static com.orion.logger.loggerapp.enums.RabbitMqEnum.QUEUE;
+// import static com.orion.logger.loggerapp.enums.RabbitMqEnum.ROUTING_KEY;
 
 // import org.springframework.amqp.rabbit.annotation.Exchange;
 // import org.springframework.amqp.rabbit.annotation.Queue;
