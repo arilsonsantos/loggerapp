@@ -67,15 +67,16 @@ public class BookService {
         SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
 
         RestStatus status = searchResponse.status();
-        List<Book> books = new ArrayList<>();
-
+        
         if (status == RestStatus.OK) {
+            List<Book> books = new ArrayList<>();
             SearchHit[] sh = searchResponse.getHits().getHits();
             if (sh.length > 0) {
                 Arrays.stream(sh)
                         .forEach(hit -> books.add(objectMapper.convertValue(hit.getSourceAsMap(), Book.class)));
             }
+            return books;
         }
-        return books;
+        return null;
     }
 }

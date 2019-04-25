@@ -22,15 +22,13 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0
     environment: 
       - discovery.type=single-node
+      - transport.host=0.0.0.0
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - http.host=0.0.0.0
-      - transport.host=127.0.0.1
-      - network.host=0.0.0.0
       - cluster.name="elastic_stack_logging"
       - node.name="elastic_stack_logging_data"
+      - dis
       - discovery.zen.minimum_master_nodes=1
-      - http.cors.enabled=true
-      - http.cors.allow-origin="*"
+      - http.cors.enabled=false
     volumes: 
       - ./elasticsearch_data:/usr/share/elasticsearch/data      
     ports:
@@ -60,6 +58,20 @@ services:
     depends_on:
       - rabbitmq
       - elasticsearch
+  app:
+    container_name: SpringApp
+    image: spring-app-build
+    ports: 
+      - 8080:8080
+    networks: 
+      - log
+    depends_on:
+      - elasticsearch
+  os:
+    container_name: linux
+    image: alpine
+    networks: 
+      - log
 
 volumes:
   mq_data:
@@ -67,4 +79,5 @@ volumes:
 
 networks:
   log:
-    driver: bridge
+    driver: "bridge"
+    
