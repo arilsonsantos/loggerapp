@@ -1,4 +1,4 @@
-package com.orion.logger.logtoqueue;
+package com.orion.logger.loggerapp;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;

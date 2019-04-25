@@ -1,4 +1,4 @@
-package com.orion.logger.logtoqueue.repository;
+package com.orion.logger.loggerapp.repository;
 
 import org.springframework.stereotype.Repository;
 

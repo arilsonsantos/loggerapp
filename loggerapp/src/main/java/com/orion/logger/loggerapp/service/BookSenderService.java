@@ -1,15 +1,14 @@
-package com.orion.logger.logtoqueue.service;
+package com.orion.logger.loggerapp.service;
 
-import static com.orion.logger.logtoqueue.enums.RabbitMqEnum.EXCHANGE_NAME;
-import static com.orion.logger.logtoqueue.enums.RabbitMqEnum.ROUTING_KEY;
+import static com.orion.logger.loggerapp.enums.RabbitMqEnum.EXCHANGE_NAME;
+import static com.orion.logger.loggerapp.enums.RabbitMqEnum.ROUTING_KEY;
 
 import java.util.UUID;
 
-import com.orion.logger.logtoqueue.model.Book;
+import com.orion.logger.loggerapp.model.Book;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.orion.logger.logtoqueue.enums;
+package com.orion.logger.loggerapp.enums;
 
 /**
  * RabbitMqEnum

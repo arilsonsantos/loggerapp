@@ -1,4 +1,4 @@
-package com.orion.logger.logtoqueue.listener;
+package com.orion.logger.loggerapp.listener;
 
 // import static com.orion.logger.logtoqueue.enums.RabbitMqEnum.EXCHANGE_NAME;
 // import static com.orion.logger.logtoqueue.enums.RabbitMqEnum.QUEUE;

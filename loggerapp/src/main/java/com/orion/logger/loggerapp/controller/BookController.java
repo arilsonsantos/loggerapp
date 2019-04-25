@@ -1,9 +1,9 @@
-package com.orion.logger.logtoqueue.controller;
+package com.orion.logger.loggerapp.controller;
 
 import java.util.List;
 
-import com.orion.logger.logtoqueue.model.Book;
-import com.orion.logger.logtoqueue.service.BookService;
+import com.orion.logger.loggerapp.model.Book;
+import com.orion.logger.loggerapp.service.BookService;
 
 import org.elasticsearch.action.search.SearchRequest;
 import org.springframework.beans.factory.annotation.Autowired;

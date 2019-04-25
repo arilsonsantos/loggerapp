@@ -1,4 +1,4 @@
-package com.orion.logger.logtoqueue.service;
+package com.orion.logger.loggerapp.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.orion.logger.logtoqueue.model.Book;
+import com.orion.logger.loggerapp.model.Book;
 
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;

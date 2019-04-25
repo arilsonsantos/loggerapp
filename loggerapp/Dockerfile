@@ -1,5 +1,5 @@
 FROM openjdk:8-jre-slim
-COPY ./target/springdatajpademo-0.0.1-SNAPSHOT.jar /usr/src/demo/
+COPY ./target/loggerapp-0.0.1-SNAPSHOT.jar /usr/src/app/
 WORKDIR /usr/src/demo
 EXPOSE 8080
-CMD ["java", "-jar", "springdatajpademo-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "loggerapp-0.0.1-SNAPSHOT.jar"]

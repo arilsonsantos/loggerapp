@@ -1,4 +1,4 @@
-package com.orion.logger.logtoqueue.model;
+package com.orion.logger.loggerapp.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;

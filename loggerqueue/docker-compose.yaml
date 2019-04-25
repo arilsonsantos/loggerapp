@@ -59,8 +59,8 @@ services:
       - rabbitmq
       - elasticsearch
   app:
-    container_name: SpringApp
-    image: spring-app-build
+    container_name: LoggerApp
+    image: logger-app-build
     ports: 
       - 8080:8080
     networks: 

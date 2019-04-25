@@ -1,4 +1,4 @@
-package com.orion.logger.logtoqueue;
+package com.orion.logger.loggerapp;
 
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

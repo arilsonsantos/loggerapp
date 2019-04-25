@@ -1,4 +1,4 @@
-package com.orion.logger.logtoqueue;
+package com.orion.logger.loggerapp;
 
 
 import org.apache.http.HttpHost;
