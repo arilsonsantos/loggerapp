@@ -5,7 +5,6 @@ import java.util.List;
 import com.orion.logger.loggerapp.model.Book;
 import com.orion.logger.loggerapp.service.BookService;
 
-import org.elasticsearch.action.search.SearchRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +22,6 @@ public class BookController {
 
     @Autowired
     public BookController(BookService service) {
-
         this.service = service;
     }
 

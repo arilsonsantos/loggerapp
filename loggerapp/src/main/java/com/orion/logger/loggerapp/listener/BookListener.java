@@ -14,20 +14,20 @@ package com.orion.logger.loggerapp.listener;
 // import lombok.extern.slf4j.Slf4j;
 
 // /**
-//  * PraticalTipListener
-//  */
+// * PraticalTipListener
+// */
 // @Slf4j
 // @Service
 // public class PraticalTipListener {
 
-//     @RabbitListener(
-//         bindings = @QueueBinding(
-//             value = @Queue(name = QUEUE.getNome()), 
-//             exchange = @Exchange(name = EXCHANGE_NAME.getNome()), 
-//             key = ROUTING_KEY.getNome()
-//         )
-//     )
-//     public void conumeFila(final Message<?> message) {
-//         log.info("Mensagem recebida: {}", message.toString());
-//     }
+// @RabbitListener(
+// bindings = @QueueBinding(
+// value = @Queue(name = QUEUE.getNome()),
+// exchange = @Exchange(name = EXCHANGE_NAME.getNome()),
+// key = ROUTING_KEY.getNome()
+// )
+// )
+// public void conumeFila(final Message<?> message) {
+// log.info("Mensagem recebida: {}", message.toString());
+// }
 // }
