@@ -63,14 +63,14 @@ services:
     container_name: LoggerApp
     image: logger-app-build:1
     ports: 
-      - 8180:8080
+      - 8180:8180
     networks: 
       - log
   app2:
     container_name: LoggerSdesApp
     image: logger-sdes-app-build:1
     ports: 
-      - 8280:8080
+      - 8280:8280
     networks: 
       - log
     # depends_on:
