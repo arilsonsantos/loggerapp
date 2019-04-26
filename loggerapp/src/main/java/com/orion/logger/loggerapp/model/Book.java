@@ -13,6 +13,6 @@ public class Book {
 
     @Id
     private int id;
-    private String title;
+    private String name;
 
 }
