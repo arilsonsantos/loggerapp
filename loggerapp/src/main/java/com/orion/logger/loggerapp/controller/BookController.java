@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping(path = "/pessoa")
+@RequestMapping(path = "/logs")
 public class BookController {
 
     private BookService service;
