@@ -24,7 +24,6 @@ services:
     environment: 
       - discovery.type=single-nodecd 
       - transport.host=0.0.0.0
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - cluster.name="elastic_stack_logging"
       - node.name="elastic_stack_logging_data"
       - discovery.zen.minimum_master_nodes=1
@@ -52,8 +51,8 @@ services:
     volumes:
       - ./product.logstash.conf:/config/product.logstash.conf      
     links:
-      - rabbitmq:AMQPServer
-      - elasticsearch:elasticsearch
+      - rabbitmq
+      - elasticsearch
     command: logstash -f /config/product.logstash.conf  
     depends_on:
       - rabbitmq
