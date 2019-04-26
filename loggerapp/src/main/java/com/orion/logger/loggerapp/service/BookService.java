@@ -52,10 +52,8 @@ public class BookService {
     }
 
     public List<Book> findAll() throws IOException {
-        SearchRequest searchRequest = new SearchRequest("jumia_log");
-        searchRequest.types("log");
+        SearchRequest searchRequest = new SearchRequest("jumia_log").types("log");
         QueryBuilder query = QueryBuilders.boolQuery().must(QueryBuilders.matchAllQuery());
-        //NativeSearchQuery nativeQuery = new NativeSearchQueryBuilder().withQuery(query).build();
         SearchSourceBuilder ssb = new SearchSourceBuilder();
         ssb.query(query);
         searchRequest.source(ssb);

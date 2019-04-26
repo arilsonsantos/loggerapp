@@ -1,11 +1,9 @@
-package com.orion.logger.loggerapp.service;
+package com.loggerapp;
 
-import static com.orion.logger.loggerapp.enums.RabbitMqEnum.EXCHANGE_NAME;
-import static com.orion.logger.loggerapp.enums.RabbitMqEnum.ROUTING_KEY;
+import static com.loggerapp.RabbitMqEnum.EXCHANGE_NAME;
+import static com.loggerapp.RabbitMqEnum.ROUTING_KEY;
 
 import java.util.Random;
-
-import com.orion.logger.loggerapp.model.Book;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,13 +28,13 @@ public class BookSenderService {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    @Scheduled(fixedDelay = 20000)
+    @Scheduled(fixedDelay = 5000)
     public void sendPraticalTip() {
         Random r = new Random();
-        Book b1 = new Book(r.nextInt(), "Teste " + r.nextDouble());
+        Pessoa b1 = new Pessoa(r.nextInt(), "Teste - SDES" + r.nextDouble());
         rabbitTemplate.convertAndSend(EXCHANGE_NAME.toString(), ROUTING_KEY.toString(), b1);
 
-        log.info("Mensagem enviada pelo LoggerApp para a fila");
+        log.info("Mensagem enviada pelo LoggerApp-SDES para a fila");
         log.info(teste);
     }
 }

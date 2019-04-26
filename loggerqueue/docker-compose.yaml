@@ -30,7 +30,8 @@ services:
       - discovery.zen.minimum_master_nodes=1
       - http.cors.enabled=false
     volumes: 
-      - ./elasticsearch_data:/usr/share/elasticsearch/data      
+      - ./elasticsearch_data:/usr/share/elasticsearch/data   
+      #- ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml   
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -58,15 +59,22 @@ services:
     depends_on:
       - rabbitmq
       - elasticsearch
-  app:
+  app1:
     container_name: LoggerApp
-    image: logger-app-build
+    image: logger-app-build:1
     ports: 
-      - 8080:8080
+      - 8180:8080
     networks: 
       - log
-    depends_on:
-      - elasticsearch
+  app2:
+    container_name: LoggerSdesApp
+    image: logger-sdes-app-build:1
+    ports: 
+      - 8280:8080
+    networks: 
+      - log
+    # depends_on:
+    #   - elasticsearch
   os:
     container_name: linux
     image: alpine

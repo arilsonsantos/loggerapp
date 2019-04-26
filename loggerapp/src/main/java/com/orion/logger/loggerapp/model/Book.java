@@ -12,7 +12,7 @@ import lombok.Data;
 public class Book {
 
     @Id
-    private String id;
+    private int id;
     private String title;
 
 }

@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "loggerqueue"
+		},
+		{
+			"path": "loggerapp"
+		},
+		{
+			"path": "loggerapp-sdes"
+		}
+	],
+	"settings": {
+		"maven.view": "hierarchical",
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
