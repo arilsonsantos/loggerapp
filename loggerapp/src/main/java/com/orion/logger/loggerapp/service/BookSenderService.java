@@ -34,9 +34,13 @@ public class BookSenderService {
     public void sendPraticalTip() {
         Random r = new Random();
         Book b1 = new Book(r.nextInt(), "Teste " + r.nextDouble());
-        rabbitTemplate.convertAndSend(EXCHANGE_NAME.toString(), ROUTING_KEY.toString(), b1);
-
-        log.info("Mensagem enviada pelo LoggerApp para a fila");
-        log.info(teste);
+        log.info("Tentando enviar mensagem para a fila");
+        try{
+            rabbitTemplate.convertAndSend(EXCHANGE_NAME.toString(), ROUTING_KEY.toString(), b1);
+            log.info("Mensagem enviada pelo LoggerApp para a fila");
+            log.info(teste);
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+        }
     }
 }
