@@ -4,14 +4,13 @@ services:
  ##########################################################
   rabbitmq:
     container_name: RabbitMQ
+    hostname: rabbitmq
     image: rabbitmq:3.7.14-management-alpine
     volumes:
       - ./mq_data:/var/lib/rabbitmq/mnesia
     ports:
       - "15672:15672"
       - "5672:5672" 
-    networks:
-      - log
     environment:
       RABBITMQ_DEFAULT_USER: JumiaUser
       RABBITMQ_DEFAULT_PASS: JumiaPass
@@ -19,73 +18,51 @@ services:
   ##########################################################
   elasticsearch:
     container_name: ElasticSearch    
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.0.0
+    image: elasticsearch:7.0.0
     environment: 
       - discovery.type=single-node
-      - transport.host=0.0.0.0
+      # - transport.host=0.0.0.0
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - cluster.name="elastic_stack_logging"
-      - node.name="elastic_stack_logging_data"
-      - dis
-      - discovery.zen.minimum_master_nodes=1
-      - http.cors.enabled=false
+      #- cluster.name="elastic_stack_logging"
+      #- discovery.zen.minimum_master_nodes=1
+      - http.cors.enabled=true
+      - http.cors.allow-origin="*"
     volumes: 
       - ./elasticsearch_data:/usr/share/elasticsearch/data   
       #- ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml   
     ports:
       - "9200:9200"
       - "9300:9300"
-    healthcheck:
-      test: ["CMD-SHELL", "curl -I -s -L http://localhost:9200 || exit 1"]
-      interval: 30s
-      timeout: 20s
-      retries: 5     
-    networks:
-      - log
-  ##########################################################
+
+    
   
-  ##########################################################
+  # ##########################################################
   logstash:
     container_name: LogStash    
-    image: docker.elastic.co/logstash/logstash-oss:7.0.0
+    image: logstash:7.0.0
     volumes:
       - ./product.logstash.conf:/config/product.logstash.conf      
-    links:
-      - rabbitmq:AMQPServer
-      - elasticsearch:elasticsearch
-    networks:
-      - log    
     command: logstash -f /config/product.logstash.conf  
     depends_on:
       - rabbitmq
       - elasticsearch
-  app1:
-    container_name: LoggerApp
-    image: logger-app-build:1
-    ports: 
-      - 8180:8180
-    networks: 
-      - log
-  app2:
-    container_name: LoggerSdesApp
-    image: logger-sdes-app-build:1
-    ports: 
-      - 8280:8280
-    networks: 
-      - log
-    # depends_on:
-    #   - elasticsearch
-  os:
-    container_name: linux
-    image: alpine
-    networks: 
-      - log
+
+  # app1:
+  #   container_name: LoggerApp
+  #   image: loggerapp:1
+  #   ports: 
+  #     - 8180:8080
+  #   depends_on: 
+  #     - logstash
+
+  # app2:
+  #   container_name: LoggerSdesApp
+  #   image: loggerappsdes:1
+  #   ports: 
+  #     - 8280:8280
+
+  
 
 volumes:
   mq_data:
   elasticsearch_data:
-
-networks:
-  log:
-    driver: "bridge"
-    
