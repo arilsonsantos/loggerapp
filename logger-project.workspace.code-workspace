@@ -5,13 +5,11 @@
 		},
 		{
 			"path": "loggerapp"
-		},
-		{
-			"path": "loggerapp-sdes"
 		}
 	],
 	"settings": {
 		"maven.view": "hierarchical",
-		"java.configuration.updateBuildConfiguration": "automatic"
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"java.configuration.maven.userSettings": "/Volumes/pdas/desenvolvimento/apache-maven-3.5.4/conf/settings.xml"
 	}
 }

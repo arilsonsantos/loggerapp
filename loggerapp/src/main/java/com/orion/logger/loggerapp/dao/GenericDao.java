@@ -43,29 +43,21 @@ public abstract class GenericDao<T> {
         return getObjectMapper().convertValue(resultMap, clazz);
     }
 
-    public SearchRequest Teste() throws Exception {
-        SearchRequest searchRequest = new SearchRequest();
-        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        searchSourceBuilder.query(QueryBuilders.matchAllQuery());
-        SearchRequest sb = searchRequest.source(searchSourceBuilder);
-        return sb;
-    }
-
     public List<T> findAll() throws IOException {
         SearchRequest searchRequest = new SearchRequest(Book.class.getSimpleName().toLowerCase());
         QueryBuilder query = QueryBuilders.boolQuery().must(QueryBuilders.matchAllQuery());
-        SearchSourceBuilder ssb = new SearchSourceBuilder();
-        ssb.query(query);
-        searchRequest.source(ssb);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(query);
+        searchRequest.source(searchSourceBuilder);
         SearchResponse searchResponse = getClient().search(searchRequest, RequestOptions.DEFAULT);
 
         RestStatus status = searchResponse.status();
 
         if (status == RestStatus.OK) {
             List<T> list = new ArrayList<>();
-            SearchHit[] sh = searchResponse.getHits().getHits();
-            if (sh.length > 0) {
-                Arrays.stream(sh)
+            SearchHit[] searchHit = searchResponse.getHits().getHits();
+            if (searchHit.length > 0) {
+                Arrays.stream(searchHit)
                         .forEach(hit -> list.add(getObjectMapper().convertValue(hit.getSourceAsMap(), clazz)));
             }
             return list;
