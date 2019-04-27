@@ -15,7 +15,9 @@ services:
       RABBITMQ_DEFAULT_USER: JumiaUser
       RABBITMQ_DEFAULT_PASS: JumiaPass
       RABBITMQ_DEFAULT_VHOST: JumiaVirtualHost
+
   ##########################################################
+
   elasticsearch:
     container_name: ElasticSearch    
     image: elasticsearch:7.0.0
@@ -34,15 +36,15 @@ services:
       - "9200:9200"
       - "9300:9300"
 
-    
-  
   # ##########################################################
+
   logstash:
     container_name: LogStash    
     image: logstash:7.0.0
     volumes:
-      - ./product.logstash.conf:/config/product.logstash.conf      
-    command: logstash -f /config/product.logstash.conf  
+      - ./config/logstash:/config
+    #command: logstash -f /config/product.logstash.conf  
+    command: logstash --path.config /config
     depends_on:
       - rabbitmq
       - elasticsearch
@@ -53,6 +55,8 @@ services:
   #   ports: 
   #     - 8180:8080
   #   depends_on: 
+  #     - rabbitmq
+  #     - elasticsearch
   #     - logstash
 
   # app2:

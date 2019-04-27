@@ -52,7 +52,7 @@ public class BookService {
     }
 
     public List<Book> findAll() throws IOException {
-        SearchRequest searchRequest = new SearchRequest("jumia_log").types("log");
+        SearchRequest searchRequest = new SearchRequest(Book.class.getSimpleName().toLowerCase());
         QueryBuilder query = QueryBuilders.boolQuery().must(QueryBuilders.matchAllQuery());
         SearchSourceBuilder ssb = new SearchSourceBuilder();
         ssb.query(query);

@@ -7,13 +7,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
 @ComponentScan(basePackages = "com.orion.logger.loggerapp")
-@EnableElasticsearchRepositories(basePackages = "com.orion.logger.loggerapp.repository")
 public class LoggerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LoggerApplication.class, args);
