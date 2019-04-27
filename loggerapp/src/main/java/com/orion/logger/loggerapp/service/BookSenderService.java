@@ -31,7 +31,7 @@ public class BookSenderService {
     @Scheduled(fixedDelay = 20000)
     public void sendPraticalTip() {
         Random r = new Random();
-        Book book = new Book(r.nextInt(), "Teste " + r.nextDouble());
+        Book book = new Book(String.valueOf(r.nextInt()), "Teste " + String.valueOf(r.nextInt()));
         log.info("Tentando enviar mensagem para a fila");
         try{
             //rabbitTemplate.convertAndSend(exchangeName, routingKey, book);
