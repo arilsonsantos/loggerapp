@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 public abstract class GenericDao<T> {
 
     protected abstract RestHighLevelClient getClient();
+
     protected abstract ObjectMapper getObjectMapper();
 
     private Class<T> clazz;
@@ -33,7 +34,6 @@ public abstract class GenericDao<T> {
     protected GenericDao(Class<T> clazz) {
         this.clazz = clazz;
     }
-
 
     public T findById(String id) throws Exception {
         GetRequest getRequest = new GetRequest("jumia_log", "log", id);
@@ -51,7 +51,7 @@ public abstract class GenericDao<T> {
         return sb;
     }
 
-    public List<Book> findAll() throws IOException {
+    public List<T> findAll() throws IOException {
         SearchRequest searchRequest = new SearchRequest(Book.class.getSimpleName().toLowerCase());
         QueryBuilder query = QueryBuilders.boolQuery().must(QueryBuilders.matchAllQuery());
         SearchSourceBuilder ssb = new SearchSourceBuilder();
@@ -62,13 +62,13 @@ public abstract class GenericDao<T> {
         RestStatus status = searchResponse.status();
 
         if (status == RestStatus.OK) {
-            List<Book> books = new ArrayList<>();
+            List<T> list = new ArrayList<>();
             SearchHit[] sh = searchResponse.getHits().getHits();
             if (sh.length > 0) {
                 Arrays.stream(sh)
-                        .forEach(hit -> books.add(getObjectMapper().convertValue(hit.getSourceAsMap(), Book.class)));
+                        .forEach(hit -> list.add(getObjectMapper().convertValue(hit.getSourceAsMap(), clazz)));
             }
-            return books;
+            return list;
         }
         return null;
     }
