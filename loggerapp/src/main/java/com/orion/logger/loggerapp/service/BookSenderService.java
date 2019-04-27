@@ -23,8 +23,10 @@ public class BookSenderService {
 
     private final RabbitTemplate rabbitTemplate;
 
-    @Value("${spring.rabbitmq.host}")
-    private String teste;
+    @Value("${elasticsearch.exchange.name}")
+    public String exchangeName;
+    @Value("${elasticsearch.routing.key}")
+    public String routingKey;
 
     public BookSenderService(final RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
@@ -33,12 +35,11 @@ public class BookSenderService {
     @Scheduled(fixedDelay = 20000)
     public void sendPraticalTip() {
         Random r = new Random();
-        Book b1 = new Book(r.nextInt(), "Teste " + r.nextDouble());
+        Book book = new Book(r.nextInt(), "Teste " + r.nextDouble());
         log.info("Tentando enviar mensagem para a fila");
         try{
-            rabbitTemplate.convertAndSend(EXCHANGE_NAME.toString(), ROUTING_KEY.toString(), b1);
+            rabbitTemplate.convertAndSend(exchangeName, routingKey, book);
             log.info("Mensagem enviada pelo LoggerApp para a fila");
-            log.info(teste);
         } catch (Exception ex) {
             log.error(ex.getMessage());
         }

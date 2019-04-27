@@ -21,12 +21,6 @@ public class ElasticsearchConfig {
     @Value("${elasticsearch.port}")
     public int port;
 
-    @Value("${elasticsearch.index.name}")
-    private String indexName;
-
-    @Value("${elasticsearch.type.name}")
-    private String typeName;
-
     @Bean(destroyMethod = "close")
     public RestHighLevelClient client() {
         RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost(host, port)));
