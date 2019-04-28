@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.orion.logger.loggerapp.model.Book;
 
 import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
@@ -30,13 +29,15 @@ public abstract class GenericDao<T> {
     protected abstract ObjectMapper getObjectMapper();
 
     private Class<T> clazz;
+    private String document;
 
     protected GenericDao(Class<T> clazz) {
         this.clazz = clazz;
+        this.document = clazz.getClass().getSimpleName().toLowerCase();
     }
 
     public T findById(String id) throws Exception {
-        GetRequest getRequest = new GetRequest("jumia_log", "log", id);
+        GetRequest getRequest = new GetRequest(document, "", id);
         GetResponse getResponse = getClient().get(getRequest, RequestOptions.DEFAULT);
         Map<String, Object> resultMap = getResponse.getSource();
 
@@ -44,7 +45,7 @@ public abstract class GenericDao<T> {
     }
 
     public List<T> findAll() throws IOException {
-        SearchRequest searchRequest = new SearchRequest(Book.class.getSimpleName().toLowerCase());
+        SearchRequest searchRequest = new SearchRequest(document);
         QueryBuilder query = QueryBuilders.boolQuery().must(QueryBuilders.matchAllQuery());
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.query(query);

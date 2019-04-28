@@ -35,7 +35,7 @@ public class BookController {
     public List<Book> findAll() throws Exception {
         log.info("acessando api");
         return service.findAll();
-        
+
     }
 
 }
