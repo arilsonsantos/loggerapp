@@ -33,7 +33,7 @@ public abstract class GenericDao<T> {
 
     protected GenericDao(Class<T> clazz) {
         this.clazz = clazz;
-        this.document = clazz.getClass().getSimpleName().toLowerCase();
+        this.document = clazz.getSimpleName().toLowerCase();
     }
 
     public T findById(String id) throws Exception {
