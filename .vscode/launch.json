@@ -9,6 +9,16 @@
             "mainClass": "com.orion.logger.loggerapp.LoggerApplication",
             "projectName": "loggerapp",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-LoggerApplication<loggerappdata>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.orion.loggerappdata.LoggerApplication",
+            "projectName": "loggerappdata",
+            "args": ""
         }
     ]
 }

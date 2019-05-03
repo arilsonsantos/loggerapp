@@ -44,14 +44,14 @@ services:
       - rabbitmq
       - elasticsearch
 
-  app1:
-    container_name: LoggerApp
-    image: loggerapp:1
-    ports: 
-      - 8180:8080
-    depends_on: 
-      - rabbitmq
-      - elasticsearch
+  # app1:
+  #   container_name: LoggerApp
+  #   image: loggerapp:1
+  #   ports: 
+  #     - 8180:8080
+  #   depends_on: 
+  #     - rabbitmq
+  #     - elasticsearch
 
 
   # app2:
