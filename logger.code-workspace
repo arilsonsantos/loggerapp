@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "loggerapp"
+		},
+		{
+			"path": "loggerappdata"
+		},
+		{
+			"path": "loggerqueue"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}

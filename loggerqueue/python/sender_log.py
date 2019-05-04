@@ -1,7 +1,7 @@
 import pika
 
 
-credenciais = pika.PlainCredentials('JumiaUser', 'JumiaPass')
+credenciais = pika.PlainCredentials('user', 'password')
 parameters = pika.ConnectionParameters(host='localhost', port=5672,
     virtual_host = 'JumiaVirtualHost', credentials=credenciais)
 
