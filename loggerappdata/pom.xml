@@ -19,7 +19,7 @@
 		<java.version>1.8</java.version>
 		<log4j.version>2.11.2</log4j.version>
 		<dockerfile.version>1.4.5</dockerfile.version>
-		<jackson-databind.version>2.9.6</jackson-databind.version>
+		<jackson-databind.version>2.9.10.4</jackson-databind.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
